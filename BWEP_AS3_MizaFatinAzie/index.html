@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+	body{
+		background-color: #001f4d;
+	}
+#container{
+	display: grid;
+	grid-template-columns: repeat(4,1fr);
+	grid-template-rows: repeat(3,31vh);
+	background-color:  #001f4d;
+	grid-gap: 10px;
+	grid-template-areas:
+			"itemone itemseven itemseven itemtwo"
+			"itemthree itemseven itemseven itemfour"
+			"itemfive itemfive itemsix itemsix"
+}
+
+@media screen and (max-width: 600px){
+	#container{
+		display: grid;
+		grid-template-columns: repeat(2,1fr);
+		grid-template-rows: repeat(4,30vh);
+		background-color:  #001f4d;
+		grid-gap: 10px;
+		grid-template-areas:
+		"itemone itemtwo"
+		"itemthree itemfour"
+		"itemfive itemsix"
+		"itemseven itemseven"
+	}
+}
+
+#container>div{
+	display: grid;
+	text-align: center;
+	align-items: center;
+	border-radius: 10px;
+}
+#one, #two, #three, #four, #five, #six, #seven{
+	background-color: #D8E3E7;
+	font-size: 1.15em;
+	font-weight: bold;
+	font-family: Arial;
+}
+#one{
+	grid-area: itemone;
+}
+#two{
+	grid-area: itemtwo;
+}
+#three{
+	grid-area: itemthree;
+}
+#four{
+	grid-area: itemfour;
+}
+#five{
+	grid-area: itemfive;
+}
+#six{
+	grid-area: itemsix;
+}
+#seven{
+	grid-area: itemseven;
+}
+
+img{
+	height: 25vh;
+	width: 1.5fr;
+	margin: auto;
+}
+
+img:hover{
+			transform: scale(1.2);
+}
+
+#haribulan{
+	text-align: center;
+}
+
+.HB {
+	display: inline;
+	background-color:   #4d88ff;
+	/*color: #FFFFFF;*/
+	font-size: 28px;
+	align-items: center;
+
+}
+
+</style>
+
+</head>
+<body>
+
+	<div id="haribulan">
+		<div id="year" class="HB"></div>
+		<div id="month" class="HB"></div>
+		<div id="date" class="HB"></div>
+		<div id="hour" class="HB"></div>
+		<div id="min" class="HB"></div>
+		<div id="sec" class="HB"></div>
+	</div>
+
+<script type="text/javascript">
+	// https://www.w3schools.com/js/js_dates.asp
+	var d = new Date();
+	document.getElementById("year").innerHTML = "Year: " + d.getFullYear();
+	document.getElementById("month").innerHTML = "Month: " + (d.getMonth() + 1);
+	document.getElementById("date").innerHTML = "Day: " + d.getDate();
+	document.getElementById("hour").innerHTML = "Hours: " + d.getHours();
+	document.getElementById("min").innerHTML = "Minutes: " + d.getMinutes();
+	document.getElementById("sec").innerHTML = "Seconds: " + d.getSeconds();
+</script>
+
+<div id="container">
+	<div id="one">Formal Layout 1</div>
+	<div id="two">Informal Layout 1</div>
+	<div id="three">Formal Layout 2</div>
+	<div id="four">Informal Layout 2</div>
+	<div id="five">
+		<img src="images/layout1.png">
+		<a href="l1.html">Corporate Layout 1</a>
+	</div>
+	<div id="six">
+		<img src="images/layout2.png">
+		<a href="l2.html"> Corporate Layout 2</a>
+	</div>
+	<div id="seven">
+		<a href="customise.html">
+		<img src="images/customise.png" alt="Customise">
+		</a>Customise</div>
+</div>
+
+</body>
+</html>

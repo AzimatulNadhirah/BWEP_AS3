@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Dinner Party</title>
+	<link href="https://fonts.googleapis.com/css2?family=Abel&family=Cormorant:wght@300&family=Hammersmith+One&family=Noto+Serif+JP:wght@200&family=Quicksand:wght@300&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	<style type="text/css">
+		body{
+			margin: 0;
+			text-align: center;
+			font-weight: bold;
+			font-family: Times New Roman;
+			background-color: #001f4d;
+			/* display: grid;
+			grid-template-rows: 100px 1fr;
+			grid-template-areas:
+			"header"
+			"container"; */
+		}
+		#header {
+			height: 100px;
+			width: 100%;
+			line-height: 100px;
+			text-align: center;
+			font-family: Times New Roman;
+			background-color: #4d88ff;
+			display: grid;
+			/* grid-area: header; */
+			grid-template-columns: 4fr 1fr;
+		}
+		#header div:nth-child(1) {
+			border-right: 1px solid #000;
+		}
+		#header h1 {
+			margin: 0;
+		}
+		#header a {
+			text-decoration: none;
+			color: #000;
+		}
+		#container {
+			display: grid;
+			grid-template-columns: 422px 1fr;
+			grid-template-rows: 1fr;
+			grid-template-areas:
+			"one two";
+		}
+		.one{
+			grid-area: one;
+			width: 380px;
+			text-align: left;
+			background-color: #D8E3E7;
+			border: 1px solid black;
+			padding: 20px;
+			position: absolute;
+			top: 100px;
+			height: 700px;
+			bottom: 0;
+		}
+		.two {
+			grid-area: two;
+			margin: 30px auto 0 auto;
+			display: grid;
+			grid-template-rows: auto auto;
+			grid-template-areas:
+			"content"
+			"button";
+		}
+		#content {
+			grid-area: content;
+			background-color: #fff;
+			width: 650px;
+			height: 550px;
+			border: 5px solid black;
+		}
+		.save-submit {
+			grid-area: button;
+		}
+		.save-submit button {
+			padding: 5px 0;
+			margin: 20px 0;
+		}
+		.text{
+			padding: 5px;
+			width: 45%;
+		}
+		@media screen and (max-width: 1080px) {
+			#container {
+				display: grid;
+				grid-template-columns: 1fr;
+				grid-template-rows: auto auto;
+				grid-template-areas:
+				"two"
+				"one";
+				grid-gap: 10px;
+			}
+			.one {
+				margin: 0 auto;
+				position: static;
+				padding-bottom: 20px;
+			}
+			.one button {
+				padding: 15px;
+			}
+			.two {
+				margin: 40px auto 0 auto;
+				grid-template-areas:
+				"button"
+				"content";
+			}
+			.save-submit button {
+				padding: 15px 0;
+			}
+		}
+	</style>
+	<script type="text/javascript">
+
+		function preview(){
+
+			var greet = document.getElementById("greet");
+			var name = document.getElementById("name");
+			var date = document.getElementById("date");
+			var venue = document.getElementById("venue");
+			var time = document.getElementById("time");
+			var close = document.getElementById("close");
+			var sender = document.getElementById("sender");
+
+			var greet1 = document.getElementById("greet1");
+			var name1 = document.getElementById("name1");
+			var date1 = document.getElementById("date1");
+			var venue1 = document.getElementById("venue1");
+			var time1 = document.getElementById("time1");
+			var close1 = document.getElementById("close1");
+			var sender1 = document.getElementById("sender1");
+
+			localStorage.setItem("greet", greet.value);
+			localStorage.setItem("name", name.value);
+			localStorage.setItem("date", date.value);
+			localStorage.setItem("venue", venue.value);
+			localStorage.setItem("time", time.value);
+			localStorage.setItem("close", close.value);
+			localStorage.setItem("sender", sender.value);
+
+			greet1.innerHTML = localStorage.getItem("greet");
+			name1.innerHTML = localStorage.getItem("name");
+			date1.innerHTML = localStorage.getItem("date");
+			venue1.innerHTML = localStorage.getItem("venue");
+			time1.innerHTML = localStorage.getItem("time");
+			close1.innerHTML = localStorage.getItem("close");
+			sender1.innerHTML = localStorage.getItem("sender");
+		}
+		function save(){
+			var greet1 = document.getElementById("greet1");
+			var name1 = document.getElementById("name1");
+			var date1 = document.getElementById("date1");
+			var venue1 = document.getElementById("venue1");
+			var time1 = document.getElementById("time1");
+			var close1 = document.getElementById("close1");
+			var sender1 = document.getElementById("sender1");
+
+			localStorage.setItem("greet1", greet1.value);
+			localStorage.setItem("name1", name1.value);
+			localStorage.setItem("date1", date1.value);
+			localStorage.setItem("venue1", venue1.value);
+			localStorage.setItem("time1", time1.value);
+			localStorage.setItem("close1", close1.value);
+			localStorage.setItem("sender1", sender1.value);
+		}
+		function load(){
+			var greet = document.getElementById("greet");
+			var name = document.getElementById("name");
+			var date = document.getElementById("date");
+			var venue = document.getElementById("venue");
+			var time = document.getElementById("time");
+			var close = document.getElementById("close");
+			var sender = document.getElementById("sender");
+
+			greet.innerHTML = localStorage.getItem("greet1");
+			name.innerHTML = localStorage.getItem("name1");
+			date.innerHTML = localStorage.getItem("date1");
+			venue.innerHTML = localStorage.getItem("venue1");
+			time.innerHTML = localStorage.getItem("time1");
+			close.innerHTML = localStorage.getItem("close1");
+			sender.innerHTML = localStorage.getItem("sender1");
+		}
+		function font(value){
+
+			var out = document.getElementById("content")
+
+			if(value==0){
+				out.style.fontFamily = "Times New Roman";
+			}
+			if(value==1){
+				out.style.fontFamily = "Abel";
+			}
+			else if (value==2){
+				out.style.fontFamily = "Cormorant";
+			}
+			else if (value==3){
+				out.style.fontFamily = "Hammersmith One";
+            }
+            else if (value==4){
+				out.style.fontFamily = "Noto Serif JP";
+			}
+            else if (value==5){
+				out.style.fontFamily = "Quicksand";
+		}
+    }
+	function popup() {
+		var y = confirm("Your card has been sent successfully. Press OK to return to main page");
+		if (y == true) {
+			var x = window.location.href = "index.html";
+		}
+	}
+	function fontColor() { //www.geeksforgeeks.org/how-to-change-an-element-color-based-on-value-of-the-color-picker-value-using-onclick/
+		document.getElementById("content").style.color =
+				document.getElementById("fontColor").value;
+		}
+
+	// function changeColor() { //www.geeksforgeeks.org/how-to-change-an-element-color-based-on-value-of-the-color-picker-value-using-onclick/
+	// 	document.getElementById("content").style.color =
+	// 			document.getElementById("changeColor").value;
+	// 	}
+
+
+	</script>
+</head>
+<body>
+	<div id="header">
+		<div>
+			<h1>DINNER PARTY</h1>
+		</div>
+		<div>
+			<a href="index.html"><h1>HOME</h1></a>
+		</div>
+	</div>
+
+	<div id="container">
+		<div class="one">
+			<h3><u>Fill in here</u></h3>
+			<label class="text">Enter Greetings:</label>
+			<input type="text" id="greet" name="" class="text" required placeholder="Enter greetings"><br>
+			<br><label class="text">Enter Recipient's Name:</label>
+			<input type="text" id="name" name="" class="text" required placeholder="Enter recipient name"><br>
+			<br><label class="text">Enter Date:</label>
+			<input type="date" id="date" class="text"><br>
+			<br><label class="text">Enter Venue:</label>
+			<input type="text" id="venue" name="" class="text" required placeholder="Enter venue"><br>
+			<br><label class="text">Enter Time:</label>
+			<input type="time" id="time" class="text"><br>
+			<br><label class="text">Closing:
+			<input type="text" id="close" class="text" required placeholder="Enter closing"><br></label>
+			<br><label class="text">Sender Name:
+			<input type="text" id="sender" class="text" required placeholder="Enter sender name"><br></label>
+
+			<br><button onclick="preview()" style="width: 48%">Preview</button>
+			<button onclick="load()" style="width: 48%">Load Favorite</button><br>
+
+			<br><label><u>Choose Font Style:</u></label><br>
+			<br><input type="radio" name="font" value="0" onclick="font(this.value)" id="cormorant" style="font-family: Times New Roman">Default</input type="radio" name="font">
+			<br><input type="radio" name="font" value="1" onclick="font(this.value)" id="cormorant" style="font-family: Abel">Abel</input type="radio" name="font">
+			<br><input type="radio" name="font" value="2" onclick="font(this.value)" id="hammersmith" style="font-family: Cormorant">Cormorant</input type="radio" name="font">
+			<br><input type="radio" name="font" value="3" onclick="font(this.value)" id="hind" style="font-family: Hammersmith One">Hammersmith One</input type="radio" name="font">
+			<br><input type="radio" name="font" value="4" onclick="font(this.value)" id="noto" style="font-family: Noto Serif JP">Noto Serif JP</input type="radio" name="font">
+			<br><input type="radio" name="font" value="5" onclick="font(this.value)" id="noto" style="font-family: Quicksand">Quicksand</input type="radio" name="font"><br>
+
+			<br><label>Change Font Colour:</label>
+			<input type="color" name="color" id="fontColor" onclick="fontColor(this.value)">
+			<!-- <br><label>Change Background Colour:</label>
+			<input type="color" name="color" id="changeColor" onclick="changeColor(this.value)"> -->
+
+		</div>
+
+		<div class="two">
+			<div id="content">
+				<br>
+				<h3 id="greet1" contenteditable="true"></h3>
+				<h1 id="name1" contenteditable="true"></h1>
+				<p>IT'S TIME FOR A</p>
+				<h1>dinner party</h1>
+				<h2>JOIN US ON</h2>
+				<h3 id="date1" contenteditable="true"></h3>
+				<h2 id="venue1" contenteditable="true"></h2>
+				<h3 id="time1" contenteditable="true"></h3>
+				<i><label id="close1" contenteditable="true"></i></label><br>
+				<br><label>From: </label><label id="sender1" contenteditable="true"></label><br>
+			</div>
+			<div class="save-submit">
+				<button onclick="save()" style="width: 48%">Mark as Favorite</button>
+				<button onclick="popup()" style="width: 48%" >Submit</button>
+			</div>
+		</div>
+	</div>
+
+</body>
+</html>

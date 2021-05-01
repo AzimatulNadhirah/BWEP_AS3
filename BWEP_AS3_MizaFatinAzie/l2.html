@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title> Corporate Layout 2 </title>
+
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Hammersmith+One&family=Hind+Guntur:wght@300&family=Noto+Serif+SC:wght@200&display=swap" rel="stylesheet">
+
+<style type="text/css">
+body{
+	margin: 0 0;
+	display: flex;
+	flex-wrap: wrap;
+	text-align: center;
+	font-weight: bold;
+	font-family: Times New Roman;
+	background-color: #001f4d;
+}
+#header {
+	width: 100%;
+	text-align: center;
+	font-family: Times New Roman;
+	background-color: #4d88ff;
+}
+#container {
+	display: grid;
+	grid-template-columns: 300px 750px;
+	grid-gap: 10px;
+	/*margin: 0 auto;*/
+}
+#container > #one{
+	background-color: #D8E3E7;
+	border: 1px solid black;
+	height: 635px;
+}
+#one{
+	width: 300px;
+	margin: 0 auto;
+	position: absolute; left: 0;
+}
+#two {
+	margin: 0 0 0 0;
+	position: absolute; right: 25%; top: 17.5%;
+}
+#container > #two{
+	margin: auto;
+	height: 600px;
+	width: 455px;
+	border: 5px solid black;
+	/*background-color: #ffff;*/
+	background-color: #D8E3E7; 
+}
+#two div{
+	background-color: #000000;
+	background-image: url("images/borders.png");
+	background-size: 455px 600px;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 600px;
+	font-size: 1.2em;
+}
+#two div > p{
+	color: white;
+}
+</style>
+</style>
+
+<script type="text/javascript">
+
+function Submit(){
+	var title = document.getElementById("title");
+	var name = document.getElementById("name");
+	var greet = document.getElementById("greet");
+	var date = document.getElementById("date");
+	var time = document.getElementById("time");
+	var venue = document.getElementById("venue");
+	var close = document.getElementById("close");
+
+	localStorage.setItem("title", title.value);
+	localStorage.setItem("name", name.value); 
+	localStorage.setItem("greet", greet.value); 
+	localStorage.setItem("date", date.value); 
+	localStorage.setItem("time", time.value); 
+	localStorage.setItem("venue", venue.value);
+	localStorage.setItem("close", close.value);
+}
+
+function retrieve(){
+
+	var title = document.getElementById("title");
+	var name = document.getElementById("name");
+	var greet = document.getElementById("greet");
+	var date = document.getElementById("date");
+	var time = document.getElementById("time");
+	var venue = document.getElementById("venue");
+	var close = document.getElementById("close");
+			
+	var title1 = document.getElementById("title1");
+	var name1 = document.getElementById("name1");
+	var greet1 = document.getElementById("greet1");
+	var date1 = document.getElementById("date1");
+	var time1 = document.getElementById("time1");
+	var venue1 = document.getElementById("venue1");
+	var close1 = document.getElementById("close1");
+
+			// title1.innerHTML = "Dear, " + localStorage.getItem("title");
+	name1.innerHTML = "Dear, " + localStorage.getItem("title") + " " +localStorage.getItem("name");
+	greet1.innerHTML = "greet" + localStorage.getItem("greet");
+	date1.innerHTML = "Date: " + localStorage.getItem("date");
+	time1.innerHTML = "Time: " + localStorage.getItem("time");
+	venue1.innerHTML = "Venue: " + localStorage.getItem("venue");
+	close1.innerHTML = "closing" + localStorage.getItem("close");
+}
+
+function font(value){
+
+	var out = document.getElementById("content")
+			
+	if(value==1){
+		out.style.fontFamily = "Cormorant";
+	} else if (value==2){
+		out.style.fontFamily = "HammerSmith One";
+	} else if (value==3){
+		out.style.fontFamily = "Hind Guntur";
+    } else if (value==4){
+		out.style.fontFamily = "Noto Serif SC";
+	}
+}
+
+</script>
+
+</head>
+<body>
+
+<div id="header">
+	<h1>Corporate E-invitation</h1>
+	<h3>Please fill in the forms</h3>
+</div>
+
+<div id="container">
+	<div id="one">
+		<p>Fill in here</p>
+		<br><input type="text" id="title" placeholder="Enter title"><br>
+		<br><input type="text" id="name" placeholder="Enter name"><br>
+		<br><input type="text" id="greet" placeholder="Enter greetings"><br>
+		<br><input type="date" id="date"><br>
+		<br><input type="time" id="time"><br>
+		<br><input type="text" id="venue" placeholder="Enter the venue"><br>
+		<br><input type="text" id="close" placeholder="Closing"><br>
+		<br><button onclick="Submit()">Submit</button>
+		<button onclick="retrieve()">Preview</button><br>
+			<!-- <button type="reset" name="reset">Clear</button>
+			<button>Edit</button> -->
+
+<br><label>Choose Font Style:</label><br>
+<br><input type="radio" name="font" value="1" onclick="font(this.value)" id="cormorant" style="font-family: Cormorant">Cormorant</input>
+<br><input type="radio" name="font" value="2" onclick="font(this.value)" id="hammersmith" style="font-family: HammerSmith One">HammerSmith One</input>
+<br><input type="radio" name="font" value="3" onclick="font(this.value)" id="hind" style="font-family: Hind Guntur">Hind Guntur</input>
+<br><input type="radio" name="font" value="4" onclick="font(this.value)" id="noto" style="font-family: Noto Serif SC">Noto Serif SC</input>
+	</div>
+
+	<div id="two">	
+		
+		<div>
+		<!-- <p id="title1" contenteditable="true"></p> -->
+		<br> <br> <br> <br> 
+		<br><p id="name1" contenteditable="true"></p>
+		<br><p id="greet1" contenteditable="true"></p>
+		<br><p id="date1" contenteditable="true"></p>
+		<p id="time1" contenteditable="true"></p>
+		<p id="venue1" contenteditable="true"></p>
+		<br><p id="close1" contenteditable="true"></p>
+		</div>
+	</div>
+</body>
+</html>

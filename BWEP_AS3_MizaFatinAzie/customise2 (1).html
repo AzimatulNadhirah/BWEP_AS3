@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Customise E-Invitation</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+	<link href="https://fonts.googleapis.com/css2?family=Abel&family=Cormorant:wght@300&family=Hammersmith+One&family=Noto+Serif+JP:wght@200&family=Quicksand:wght@300&display=swap" rel="stylesheet"> <!-- https://fonts.google.com/ -->
+	<style type="text/css">
+		body{
+			margin: 0 0;
+			text-align: center;
+			font-weight: bold;
+			font-family: Times New Roman;
+			background-color: #4d88ff;
+		}
+		#header {
+			width: 100%;
+			text-align: center;
+			font-family: Times New Roman;
+			border-bottom: 1px solid black;
+		}
+		#main {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: 600px;
+			grid-gap: 10px;
+			grid-template-areas:
+			"one two three";
+			background-color: #001f4d;
+		}
+		#main > div {
+			 /*#E8EAE6;*/
+			border: 1px solid black;
+			border-top: 0;
+		}
+		.one {
+			grid-area: one;
+			width: 300px;
+			background-color: #D8E3E7;
+		}
+		.two {
+			grid-area: two;
+			width: 600px;
+			margin: 0 auto;
+			background-color: #fff;
+
+		}
+		.three {
+			grid-area: three;
+			width: 300px;
+			background-color: #D8E3E7; /*#E8EAE6;*/
+			margin-left: auto;
+		}
+
+		/* mobile view */
+		@media screen and (max-width: 1080px) {
+			#main {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 600px 300px;
+				grid-gap: 10px;
+				grid-template-areas:
+				"two two"
+				"one three";
+			}
+			.one {
+				margin-left: auto;
+			}
+			.two {
+
+			}
+			.three {
+				margin-left: 0;
+				margin-right: auto;
+			}
+
+
+
+	</style>
+
+<script type="text/javascript">
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+function stored(){
+	localStorage.setItem("dr", "Dr"); 
+	localStorage.setItem("ms", "Ms"); 
+	localStorage.setItem("mr", "Mr"); 
+	localStorage.setItem("tq", "Thank you");
+	localStorage.setItem("hgd", "Have a Good Day!"); 
+	
+	document.getElementById("Dr").innerHTML = localStorage.getItem("dr");
+	document.getElementById("Ms").innerHTML = localStorage.getItem("ms");
+	document.getElementById("Mr").innerHTML = localStorage.getItem("mr");
+	document.getElementById("Thank You").innerHTML = localStorage.getItem("tq");
+	document.getElementById("Have a Good Day!").innerHTML = localStorage.getItem("hgd");
+}
+
+function preview(){
+
+			var title = document.getElementById("title");
+			var event = document.getElementById("event");
+			var name = document.getElementById("name");
+			var date = document.getElementById("date");
+			var venue = document.getElementById("venue");
+			var time = document.getElementById("time");
+			var from = document.getElementById("from");
+			var close = document.getElementById("close");
+
+			var title1 = document.getElementById("title1");
+			var event1 = document.getElementById("event1");
+			var name1 = document.getElementById("name1");
+			var date1 = document.getElementById("date1");
+			var venue1 = document.getElementById("venue1");
+			var time1 = document.getElementById("time1");
+			var from1 = document.getElementById("from1");
+			var close1 = document.getElementById("close1");
+
+			localStorage.setItem("title", title.value);
+			localStorage.setItem("event", event.value);
+			localStorage.setItem("name", name.value); 
+			localStorage.setItem("date", date.value); 
+			localStorage.setItem("venue", venue.value);
+			localStorage.setItem("time", time.value); 
+			localStorage.setItem("from", from.value);
+			localStorage.setItem("close", close.value);
+			
+			title1.innerHTML = localStorage.getItem("title");
+			event1.innerHTML = localStorage.getItem("event");
+			name1.innerHTML = localStorage.getItem("name");
+			date1.innerHTML = localStorage.getItem("date");
+			venue1.innerHTML = localStorage.getItem("venue");
+			time1.innerHTML = localStorage.getItem("time");
+			from1.innerHTML = localStorage.getItem("from");
+			close1.innerHTML = localStorage.getItem("close");
+		}
+		function save(){
+			var title1 = document.getElementById("title1");
+			var event1 = document.getElementById("event1");
+			var name1 = document.getElementById("name1");
+			var date1 = document.getElementById("date1");
+			var venue1 = document.getElementById("venue1");
+			var time1 = document.getElementById("time1");
+			var from1 = document.getElementById("from1");
+			var close1 = document.getElementById("close1");
+
+			localStorage.setItem("title1", title1.value);
+			localStorage.setItem("event1", event1.value);
+			localStorage.setItem("name1", name1.value); 
+			localStorage.setItem("date1", date1.value); 
+			localStorage.setItem("venue1", venue1.value);
+			localStorage.setItem("time1", time1.value);  
+			localStorage.setItem("from1", from1.value);
+			localStorage.setItem("close1", close1.value);
+		}
+		function load(){
+			var title = document.getElementById("title");
+			var event = document.getElementById("event");
+			var name = document.getElementById("name");
+			var date = document.getElementById("date");
+			var venue = document.getElementById("venue");
+			var time = document.getElementById("time");
+			var from = document.getElementById("from");
+			var close = document.getElementById("close");
+
+			title.innerHTML = localStorage.getItem("title1");
+			event.innerHTML = localStorage.getItem("event1");
+			name.innerHTML = localStorage.getItem("name1");
+			date.innerHTML = localStorage.getItem("date1");
+			venue.innerHTML = localStorage.getItem("venue1");
+			time.innerHTML = localStorage.getItem("time1");
+			from.innerHTML = localStorage.getItem("from1");
+			close.innerHTML = localStorage.getItem("close1");
+		}
+		function font(value){
+
+			var out = document.getElementById("content")
+			
+			if(value==0){
+				out.style.fontFamily = "Times New Roman";
+			}
+			if(value==1){
+				out.style.fontFamily = "Abel";
+			}
+			else if (value==2){
+				out.style.fontFamily = "Cormorant";
+			}
+			else if (value==3){
+				out.style.fontFamily = "Hammersmith One";
+            }
+            else if (value==4){
+				out.style.fontFamily = "Noto Serif JP";
+			}
+            else if (value==5){
+				out.style.fontFamily = "Quicksand";
+		}
+    }
+    function popup() {
+		var y = confirm("Your card has been sent successfully. Press OK to return to main page");
+		if (y == true) {
+			var x = window.location.href = "index.html";
+		}
+	}
+	function fontColor() { //www.geeksforgeeks.org/how-to-change-an-element-color-based-on-value-of-the-color-picker-value-using-onclick/
+		document.getElementById("content").style.color =
+				document.getElementById("fontColor").value;
+		}
+
+
+</script>
+</head>
+<body onload="stored()">
+
+<div id="header">
+	<h1>CREATE NEW TEMPLATE</h1>
+	<h3><i>You can make your own design card</i></h3>
+</div>
+
+<div id="main"> <!--grid starts here-->
+
+	<div class="one">
+		<h3>Drag the text to the card</h3>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<table align="center">
+				<tr>
+					<td colspan="6"><u>Select Salutation</u></td>
+				</tr>
+				<tr>
+					<td colspan="2"><div id="Dr" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="2"><div id="Ms" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="2"><div id="Mr" draggable="true" ondragstart="drag(event)"></div></td>
+				</tr>
+				<tr>
+					<td colspan="6"></td>
+				</tr>
+				<tr>
+					<td colspan="6"><u>Select Closing</u></td>
+				</tr> 
+				<tr>
+					<td colspan="2"><div id="Thank You" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="4"><div id="Have a Good Day!" draggable="true" ondragstart="drag(event)"></div></td>
+				</tr>
+
+			</table>
+		</div>
+
+		<br><input type="text" id="title" placeholder="Select one salutation word"><br>
+		<br><input type="text" id="name" placeholder="Enter recipient name"><br>
+		<br><input type="text" id="event" placeholder="Enter event name"><br>
+		<br><input type="date" id="date"><br>
+		<br><input type="time" id="time"><br>
+		<br><input type="text" id="venue" placeholder="Enter the location"><br>
+		<br><input type="text" id="from" placeholder="Enter the sender name"><br>
+		<br><input type="text" id="close" placeholder="Select one closing word"><br>
+
+		<br><button onclick="preview()" style="width: 48%">Preview</button>
+		<button onclick="load()" style="width: 48%">Load</button><br>
+		<br><button onclick="save()" style="width: 48%">Mark as Favorite</button><br>
+		<br><button onclick="popup()" style="width: 48%">Submit</button>
+
+	</div>
+
+	<div class="two">
+		<div id="content">
+
+		
+			
+				<h3 id="title1" contenteditable="true"></h3>
+				<br>
+				<h1 id="name1" contenteditable="true"></h1>
+				<br>
+				<h1 id="event1" contenteditable="true"></h1>
+				<br>
+				<h2 id="date1" contenteditable="true"></h2>
+				<br>
+				<h2 id="time1" contenteditable="true"></h2>
+				<br>
+				<h2 id="venue1" contenteditable="true"></h2>
+				<br>
+				<label>From:</label><label id="from1" contenteditable="true"></label><br>
+				<br><i><label id="close1" contenteditable="true"></i></label>
+		</div>
+	</div>
+
+	<div class="three">
+		<div>
+			<p>Choose Layout</p>
+
+			<br><label><u>Choose Font Style:</u></label><br>
+			<br><input type="radio" name="font" value="0" onclick="font(this.value)" id="cormorant" style="font-family: Times New Roman">Default</input type="radio" name="font">
+			<br><input type="radio" name="font" value="1" onclick="font(this.value)" id="cormorant" style="font-family: Abel">Abel</input type="radio" name="font">
+			<br><input type="radio" name="font" value="2" onclick="font(this.value)" id="hammersmith" style="font-family: Cormorant">Cormorant</input type="radio" name="font">
+			<br><input type="radio" name="font" value="3" onclick="font(this.value)" id="hind" style="font-family: Hammersmith One">Hammersmith One</input type="radio" name="font">
+			<br><input type="radio" name="font" value="4" onclick="font(this.value)" id="noto" style="font-family: Noto Serif JP">Noto Serif JP</input type="radio" name="font">
+			<br><input type="radio" name="font" value="5" onclick="font(this.value)" id="noto" style="font-family: Quicksand">Quicksand</input type="radio" name="font"><br>
+
+			<br><label>Change Font Colour:</label> 
+			<input type="color" name="color" id="fontColor" onclick="fontColor(this.value)">
+
+			<select onchange="bgimg(this.value)" id="backgroundbtn">
+				<option value="0"> Select Background</option> <br> <br>
+				<option value="1"> Background 1</option>
+				<option value="2"> Background 2</option>
+				<option value="3"> Background 3</option>
+				<option value="4"> Background 4</option>
+				<option value="5"> Background 5</option>
+				<option value="6"> Background 6</option>
+			</select>
+
+
+		</div>
+	</div>
+
+
+</div> <!--grid ends here-->
+<script type="text/javascript">
+	
+	function bgimg(value){
+		var content = document.getElementById("content");
+		if (value == 0) {
+		content.style.backgroundImage= "";
+		content.style.backgroundSize= "600px 600px"
+		
+	}
+		else if (value == 1) {
+		content.style.backgroundImage= "url(images/bg-1.jpg)";
+		content.style.backgroundSize= "600px 600px"
+		
+	}
+	else if (value == 2) {
+		content.style.backgroundImage= "url(images/bg-2.png)";
+	content.style.backgroundSize= "600px 700px"
+	}
+	else if (value == 3){
+		content.style.backgroundImage= "url(images/bg-3.jpg)";
+	content.style.backgroundSize= "600px 700px"
+	}
+	else if (value == 4){
+		content.style.backgroundImage= "url(images/bg-4.png)";
+	content.style.backgroundSize= "600px 700px"
+	}
+	else if (value == 5){
+		content.style.backgroundImage= "url(images/bg-5.png)";
+	content.style.backgroundSize= "600px 700px"
+	}
+	else if (value == 6){
+		content.style.backgroundImage= "url(images/bg-6.png)";
+	content.style.backgroundSize= "600px 700px"
+	}
+}
+
+
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title> Customise E-Invitation</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant&family=Hammersmith+One&family=Hind+Guntur:wght@300&family=Noto+Serif+SC:wght@200&display=swap" rel="stylesheet">
+	<style type="text/css">
+		body{
+			margin: 0 0;
+			text-align: center;
+			font-weight: bold;
+			font-family: Times New Roman;
+			background-color: #4d88ff;
+		}
+		#header {
+			width: 100%;
+			text-align: center;
+			font-family: Times New Roman;
+			border-bottom: 1px solid black;
+		}
+		#main {
+			display: grid;
+			grid-template-columns: repeat(3, 1fr);
+			grid-template-rows: 600px;
+			grid-gap: 10px;
+			grid-template-areas:
+			"one two three";
+			background-color: #001f4d;
+		}
+		#main > div {
+			background-color: #D8E3E7; /*#E8EAE6;*/
+			border: 1px solid black;
+			border-top: 0;
+		}
+		.one {
+			grid-area: one;
+			width: 300px;
+		}
+		.two {
+			grid-area: two;
+			width: 600px;
+			margin: 0 auto;
+		}
+		.three {
+			grid-area: three;
+			width: 300px;
+			background-color: #D8E3E7; /*#E8EAE6;*/
+			margin-left: auto;
+		}
+
+		/* mobile view */
+		@media screen and (max-width: 1080px) {
+			#main {
+				display: grid;
+				grid-template-columns: 1fr 1fr;
+				grid-template-rows: 600px 300px;
+				grid-gap: 10px;
+				grid-template-areas:
+				"two two"
+				"one three";
+			}
+			.one {
+				margin-left: auto;
+			}
+			.two {
+
+			}
+			.three {
+				margin-left: 0;
+				margin-right: auto;
+			}
+		}
+	</style>
+
+<script type="text/javascript">
+
+function allowDrop(ev) {
+  ev.preventDefault();
+}
+
+function drag(ev) {
+  ev.dataTransfer.setData("text", ev.target.id);
+}
+
+function drop(ev) {
+  ev.preventDefault();
+  var data = ev.dataTransfer.getData("text");
+  ev.target.appendChild(document.getElementById(data));
+}
+
+function stored(){
+	localStorage.setItem("dr", "Dr"); 
+	localStorage.setItem("ms", "Ms"); 
+	localStorage.setItem("mr", "Mr"); 
+	localStorage.setItem("tq", "Thank you");
+	localStorage.setItem("hgd", "Have a Good Day!"); 
+	
+	document.getElementById("Dr").innerHTML = localStorage.getItem("dr");
+	document.getElementById("Ms").innerHTML = localStorage.getItem("ms");
+	document.getElementById("Mr").innerHTML = localStorage.getItem("mr");
+	document.getElementById("Thank You").innerHTML = localStorage.getItem("tq");
+	document.getElementById("Have a Good Day!").innerHTML = localStorage.getItem("hgd");
+}
+
+function Submit(){
+	var title = document.getElementById("title");
+	var name = document.getElementById("name");
+	var greet = document.getElementById("greet");
+	var date = document.getElementById("date");
+	var time = document.getElementById("time");
+	var venue = document.getElementById("venue");
+	var close = document.getElementById("close");
+
+	localStorage.setItem("title", title.value)
+	localStorage.setItem("name", name.value); 
+	localStorage.setItem("greet", greet.value); 
+	localStorage.setItem("date", date.value); 
+	localStorage.setItem("time", time.value); 
+	localStorage.setItem("venue", venue.value);
+	localStorage.setItem("close", close.value);
+}
+
+function retrieve(){
+
+	var title = document.getElementById("title");
+	var name = document.getElementById("name");
+	var greet = document.getElementById("greet");
+	var date = document.getElementById("date");
+	var time = document.getElementById("time");
+	var venue = document.getElementById("venue");
+	var close = document.getElementById("close");
+			
+	var title1 = document.getElementById("title1");
+	var name1 = document.getElementById("name1");
+	var greet1 = document.getElementById("greet1");
+	var date1 = document.getElementById("date1");
+	var time1 = document.getElementById("time1");
+	var venue1 = document.getElementById("venue1");
+	var close1 = document.getElementById("close1");
+
+			// title1.innerHTML = "Dear, " + localStorage.getItem("title");
+	name1.innerHTML = "Dear, " + localStorage.getItem("title") + " " +localStorage.getItem("name");
+	greet1.innerHTML = localStorage.getItem("greet");
+	date1.innerHTML = "Date: " + localStorage.getItem("date");
+	time1.innerHTML = "Time: " + localStorage.getItem("time");
+	venue1.innerHTML = "Venue: " + localStorage.getItem("venue");
+	close1.innerHTML = localStorage.getItem("close");
+}
+
+</script>
+</head>
+<body onload="stored()">
+
+<div id="header">
+	<h1>CREATE NEW TEMPLATE</h1>
+	<h3><i>You can make your own design card</i></h3>
+</div>
+
+<div id="main"> <!--grid starts here-->
+
+	<div class="one">
+		<h3>Drag the text to the card</h3>
+
+		<div id="div1" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<table align="center">
+				<tr>
+					<td colspan="6"> Select Salutation </td>
+				</tr>
+				<tr>
+					<td colspan="2"><div id="Dr" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="2"><div id="Ms" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="2"><div id="Mr" draggable="true" ondragstart="drag(event)"></div></td>
+				</tr>
+				<tr>
+					<td colspan="6"></td>
+				</tr>
+				<tr>
+					<td colspan="6"> Select Closing </td>
+				</tr> 
+				<tr>
+					<td colspan="2"><div id="Thank You" draggable="true" ondragstart="drag(event)"></div></td>
+					<td colspan="4"><div id="Have a Good Day!" draggable="true" ondragstart="drag(event)"></div></td>
+				</tr>
+
+			</table>
+		</div>
+
+		<br><input type="text" id="title" placeholder="Select one salutation word"><br>
+		<br><input type="text" id="name" placeholder="Enter name"><br>
+		<br><input type="text" id="greet" placeholder="Enter greetings"><br>
+		<br><input type="date" id="date"><br>
+		<br><input type="time" id="time"><br>
+		<br><input type="text" id="venue" placeholder="Enter the venue"><br>
+		<br><input type="text" id="close" placeholder="Select one closing word"><br>
+
+		<br><button onclick="Submit()">Submit</button>
+		<button onclick="retrieve()">Preview</button><br>
+
+	</div>
+
+	<div class="two">
+		<div id="div2" ondrop="drop(event)" ondragover="allowDrop(event)">
+			<p>Preview</p>
+		</div>
+	</div>
+
+	<div class="three">
+		<div>
+			<p>Choose Layout</p>
+
+			<br><label>Choose Font Style:</label><br>
+			<br><input type="radio" name="font" value="1" onclick="font(this.value)" id="cormorant" style="font-family: Cormorant">Cormorant</input>
+			<br><input type="radio" name="font" value="2" onclick="font(this.value)" id="hammersmith" style="font-family: HammerSmith One">HammerSmith One</input>
+			<br><input type="radio" name="font" value="3" onclick="font(this.value)" id="hind" style="font-family: Hind Guntur">Hind Guntur</input>
+			<br><input type="radio" name="font" value="4" onclick="font(this.value)" id="noto" style="font-family: Noto Serif SC">Noto Serif SC</input><br>
+
+			<br><label>Change color:</label>
+			<input type="color" name="color" id="color">
+
+		</div>
+	</div>
+
+
+</div> <!--grid ends here-->
+
+</body>
+</html>
